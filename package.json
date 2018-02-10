@@ -1,0 +1,27 @@
+{
+  "name": "udemy_mean",
+  "version": "1.0.0",
+  "description": "section 1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klynkins/udemy_mean.git"
+  },
+  "author": "Katelynn Campbell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klynkins/udemy_mean/issues"
+  },
+  "homepage": "https://github.com/klynkins/udemy_mean#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.0"
+  }
+}
