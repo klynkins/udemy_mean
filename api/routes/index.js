@@ -19,7 +19,7 @@ router
     /* review routes */
     
 router
-    .route("/hotels:hotelId/reviews")
+    .route("/hotels/:hotelId/reviews")
     .get(ctrlReviews.reviewsGetAll)
     .post(ctrlReviews.reviewsAddOne);
     
