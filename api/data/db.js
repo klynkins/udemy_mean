@@ -1,40 +1,40 @@
-var mongoose = require("mongoose");
-var dburl = "mongodb://"+process.env.IP+":27017/meanhotel";
+var mongoose = require('mongoose');
+var dburl = 'mongodb://'+process.env.IP+':27017/meanhotel';
 
 mongoose.connect(dburl);
 
-mongoose.connection.on("connected", function() {
-    console.log("Mongoose connected to " + dburl);
-});
-mongoose.connection.on("disconnected", function() {
-    console.log("Mongoose disconnected");
-});
-mongoose.connection.on("error", function(err) {
-    console.log("Mongoose coonection error: " + err);
+mongoose.connection.on("connected", function(){
+	console.log("Mongoose connected to "+ dburl);
 });
 
-process.on("SIGINT", function() {
-    mongoose.connection.close(function(){
-        console.log("Mongoose disconnected through app termination (SIGINT)");
-        process.exit(0);
-    });
+mongoose.connection.on("disconnected", function(){
+	console.log("Mongoose disconnected");
 });
 
-process.on("SIGTERM", function() {
-    mongoose.connection.close(function(){
-        console.log("Mongoose disconnected through app termination (SIGTERM)");
-        process.exit(0);
-    });
+mongoose.connection.on("error", function(err){
+	console.log("Mongoose connection error: "+ err);
 });
 
-process.once("SIGUSR2", function() {
-    mongoose.connection.close(function(){
-        console.log("Mongoose disconnected through app termination (SIGUSR2)");
-        process.kill(process.pid, "SIGUSR2");
-    });
+process.on("SIGINT", function(){
+	mongoose.connection.close(function(){
+		console.log("Mongoose disconnected through app termination (SIGINT)");
+		process.exit(0);
+	});
 });
 
-/* BRING IN SCHEMAS AND MODELS */
-require("./hotels.model.js");
+process.on("SIGTERM", function(){
+	mongoose.connection.close(function(){
+		console.log("Mongoose disconnected through app termination (SIGTERM)");
+		process.exit(0);
+	});
+});
 
-require("./users.model");
+process.once("SIGUSR2", function(){
+	mongoose.connection.close(function(){
+		console.log("Mongoose disconnected through app termination (SIGUSR2)");
+		process.kill(process.pid, "SIGUSR2");
+	});
+});
+
+require('./hotels.model');
+require('./users.model');

@@ -1,43 +1,39 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 
-var ctrlHotels = require("../controllers/hotels.controllers.js");
-var ctrlReviews = require("../controllers/reviews.controllers.js");
-var ctrlUsers = require("../controllers/users.controllers.js");
+var ctrlHotels = require('../controllers/hotels.controllers.js');
+var ctrlReviews = require('../controllers/reviews.controllers.js');
+var ctrlUsers = require('../controllers/users.controllers.js');
 
 router
-    .route("/hotels")
-    .get(ctrlUsers.authenticate, ctrlHotels.hotelsGetAll)
-    .post(ctrlHotels.hotelsAddOne);
+	.route('/hotels')
+	.get(ctrlHotels.hotelsGetAll) 
+	.post(ctrlHotels.hotelsAddOne); 
 
 router
-    .route("/hotels/:hotelId")
-    .get(ctrlHotels.hotelsGetOne)
-    .put(ctrlHotels.hotelsUpdateOne)
-    .delete(ctrlHotels.hotelsDeleteOne);
-
-
-/* review routes */
+	.route('/hotel/:hotelId')
+	.get(ctrlHotels.hotelsGetOne)
+	.put(ctrlHotels.hotelsUpdateOne)
+	.delete(ctrlHotels.hotelsDeleteOne);
 
 router
-    .route("/hotels/:hotelId/reviews")
-    .get(ctrlReviews.reviewsGetAll)
-    .post(ctrlUsers.authenticate, ctrlReviews.reviewsAddOne);
-
+	.route('/hotel/:hotelId/reviews')
+	.get(ctrlReviews.reviewsGetAll)  
+	.post(ctrlUsers.authenticate, ctrlReviews.reviewsAddOne);
+	
 router
-    .route("/hotels/:hotelId/reviews/:reviewId")
-    .get(ctrlReviews.reviewsGetOne)
-    .put(ctrlReviews.reviewsUpdateOne)
-    .delete(ctrlReviews.reviewsDeleteOne);
-
-/* Authentication */
-
+	.route('/hotel/:hotelId/reviews/:reviewId')
+	.get(ctrlReviews.reviewsGetOne)
+	.put(ctrlReviews.reviewsUpdateOne)
+	.delete(ctrlReviews.reviewsDeleteOne);
+	
 router
-    .route("/users/register")
-    .post(ctrlUsers.register);
-
+	.route('/users/register')
+	.post(ctrlUsers.register);
+	
 router
-    .route("/users/login")
-    .post(ctrlUsers.login);
-
-module.exports = router;
+	.route('/users/login')
+	.post(ctrlUsers.login);
+	
+	
+	module.exports = router;
